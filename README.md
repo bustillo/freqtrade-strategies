@@ -6,7 +6,7 @@ Includes configurations, custom logic, and documentation for seamless implementa
 
 ## 📈 Available Strategies  
 
-### 1. **ZaratustraDCA2_06** ([Code](ZaratustraDCA2_06.py) | [Config](config.ZaratustraDCA2_06.json))  
+### 1. **ZaratustraDCA2_06** ([Code](ZaratustraDCA/ZaratustraDCA2_06.py) | [Config](ZaratustraDCA/config.ZaratustraDCA2_06.json))  
 - **Description**: Advanced futures trading strategy combining **Dollar Cost Averaging (DCA)** with dynamic risk management, trend-following signals, and partial profit-taking logic.  
 - **Features**:  
   - **Multi-directional Trading**: Supports both Long and Short positions in futures markets.  

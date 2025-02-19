@@ -34,8 +34,7 @@ class ZaratustraDCA2_06(IStrategy):
         NOTE: This strategy is under development, and some functions may be disabled or incomplete. Parameters like ROI
         targets and advanced stoploss logic are subject to future optimization. Test thoroughly before using it in live trading.
 
-        |)   _|_.||  
-        |)L|_\|_|||()
+        Telegram Profile: https://t.me/bustillo
 
         Choose your coffee style:  
         - BTC (Classic): bc1qfq46qqhurg8ps73506rtqsr26mfhl9t6vp2ltc
@@ -157,6 +156,10 @@ class ZaratustraDCA2_06(IStrategy):
         count_of_entries = trade.nr_of_successful_entries
 
         try:
+            if not filled_entries:
+                logger.warning(f"No executed orders for {trade.pair}. Aborting DCA.")
+                return None
+
             stake_amount = filled_entries[0].cost
 
             if count_of_entries > 1:

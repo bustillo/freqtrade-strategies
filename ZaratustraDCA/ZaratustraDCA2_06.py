@@ -38,7 +38,8 @@ class ZaratustraDCA2_06(IStrategy):
 
         Choose your coffee style:  
         - BTC (Classic): bc1qfq46qqhurg8ps73506rtqsr26mfhl9t6vp2ltc
-        - ETH (Smart): 0x486Ef431878e2a240ea2e7A6EBA42e74632c265c
+        - ETH/ERC-20 & BSC/BEP-20 (Smart): 0x486Ef431878e2a240ea2e7A6EBA42e74632c265c
+          (Supports ETH, BNB, USDT, and tokens on: Ethereum, Binance Smart Chain, and EVM-compatible networks.)
         - SOL (Speed): 2nrYABUJLjHtUdVTXkcY8ELUK7q3HH4iWXQxQMQDdZa8
         - XMR (Privacy): 45kQh8n23AgiY2yEDbMmJdcMGTaHmpn6vFfhECs7EwtPZ7pbyCQAyzDCehtDZSGsWzaDGir1LfA4EGDQP3dtPStsMdrzUG5
     """

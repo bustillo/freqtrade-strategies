@@ -197,7 +197,7 @@ class ZaratustraDCA2_06(IStrategy):
                     (df['pdi'] > df['mdi'])
             ),
             ['enter_long', 'enter_tag']
-        ] = (1, 'ZaratustraDCA Entry Long')
+        ] = (1, 'Entry Long (DX↑PDI & ADX>MDI & PDI>MDI)')
 
         df.loc[
             (
@@ -206,7 +206,7 @@ class ZaratustraDCA2_06(IStrategy):
                     (df['mdi'] > df['pdi'])
             ),
             ['enter_short', 'enter_tag']
-        ] = (1, 'ZaratustraDCA Entry Short')
+        ] = (1, 'Entry Short (DX↑MDI & ADX>PDI & MDI>PDI)')
 
         return df
 
@@ -214,24 +214,23 @@ class ZaratustraDCA2_06(IStrategy):
         """
             Defines exit conditions for trades based on the ADX indicator:
             - Exit Long: Triggered when 'dx' crosses below 'adx' and ADX is strong (>25).
-            - Exit Short: Triggered when 'dx' crosses below 'adx' and ADX is weak (≤25).
+            - Exit Short: PDI crosses above MDI (momentum reversal) OR weak trend strength (ADX <20).
         """
 
         df.loc[
             (
                     (qtpylib.crossed_below(df['dx'], df['adx'])) &
-                    (df['adx'] > 25)  # Strong ADX (above 25, to confirm trend)
-
+                    (df['adx'] > 25)
             ),
             ['exit_long', 'exit_tag']
-        ] = (1, 'ZaratustraDCA Exit Long')
+        ] = (1, 'Exit Long (DX↓ADX|ADX>25)')
 
         df.loc[
             (
-                    (qtpylib.crossed_below(df['dx'], df['adx'])) &
-                    (df['adx'] <= 25)  # Weak ADX (below 25, lacks trend strength)
+                    (qtpylib.crossed_above(df['pdi'], df['mdi'])) |
+                    (df['adx'] < 20)
             ),
             ['exit_short', 'exit_tag']
-        ] = (1, 'ZaratustraDCA Exit Short')
+        ] = (1, 'Exit Short (PDI↑|ADX<20)')
 
         return df

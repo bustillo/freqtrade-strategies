@@ -13,11 +13,11 @@ Includes configurations, custom logic, and documentation for seamless implementa
   - **Dynamic Position Sizing**:  
     - **50% fixed stake increase per additional entry**: Each DCA re-entry increases the position size by 50% of the initial stake to average down/up.
   - **Entry Signals**:  
-    - **Longs**: DX > PDI + ADX > MDI + PDI > MDI.  
-    - **Shorts**: DX > MDI + ADX > PDI + MDI > PDI.  
+    - **Longs**: DX > PDI & ADX > MDI & PDI > MDI.  
+    - **Shorts**: DX > MDI & ADX > PDI & MDI > PDI.  
   - **Exit Signals**:  
-    - **Longs**: DX crosses below ADX + ADX > 25.  
-    - **Shorts**: DX crosses below ADX + ADX ≤ 25.  
+    - **Longs**: DX crosses below ADX & ADX > 25.  
+    - **Shorts**: PDI crosses above MDI & ADX < 25.
   - **Risk Protections**:  
     - Fixed stop-loss (-10%).  
     - Cooldown mechanisms to prevent overtrading.  
@@ -31,7 +31,7 @@ Includes configurations, custom logic, and documentation for seamless implementa
   freqtrade trade --strategy ZaratustraDCA2_06 --config config.ZaratustraDCA2_06.json  
 
 ### 2. **Other Strategies** (Coming Soon)  
-- *Melquiades_08_3*: 5m timeframe strategy (Coming Soon).   
+- *Melquiades*: 5m timeframe strategy (Coming Soon).   
 
 ---
 

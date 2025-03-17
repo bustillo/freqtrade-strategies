@@ -214,7 +214,7 @@ class ZaratustraDCA2_06(IStrategy):
         """
             Defines exit conditions for trades based on the ADX indicator:
             - Exit Long: Triggered when 'dx' crosses below 'adx' and ADX is strong (>25).
-            - Exit Short: PDI crosses above MDI (momentum reversal) OR weak trend strength (ADX <20).
+            - Exit Short: PDI crosses above MDI (momentum reversal) AND weak trend strength (ADX <25).
         """
 
         df.loc[
@@ -223,14 +223,14 @@ class ZaratustraDCA2_06(IStrategy):
                     (df['adx'] > 25)
             ),
             ['exit_long', 'exit_tag']
-        ] = (1, 'Exit Long (DX↓ADX|ADX>25)')
+        ] = (1, 'Exit Long (DX↓ADX & ADX>25)')
 
         df.loc[
             (
-                    (qtpylib.crossed_above(df['pdi'], df['mdi'])) |
-                    (df['adx'] < 20)
+                    (qtpylib.crossed_above(df['pdi'], df['mdi'])) &
+                    (df['adx'] < 25)
             ),
             ['exit_short', 'exit_tag']
-        ] = (1, 'Exit Short (PDI↑|ADX<20)')
+        ] = (1, 'Exit Short (PDI↑MDI & ADX<25)')
 
         return df
